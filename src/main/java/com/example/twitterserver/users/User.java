@@ -22,6 +22,14 @@ public class User {
     @OneToMany(mappedBy = "tweetedBy")
     private List<Tweet> tweets;
 
+    public List<Tweet> getTweets() {
+        return tweets;
+    }
+
+    public void setTweets(List<Tweet> tweets) {
+        this.tweets = tweets;
+    }
+
     public Boolean getVerified() {
         return verified;
     }
