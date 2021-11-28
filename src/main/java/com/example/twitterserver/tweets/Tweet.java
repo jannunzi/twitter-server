@@ -1,6 +1,7 @@
 package com.example.twitterserver.tweets;
 
 import com.example.twitterserver.users.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -14,6 +15,7 @@ public class Tweet {
     private String tweet;
     private Timestamp tweetedOn;
     @ManyToOne
+    @JsonIgnore
     private User tweetedBy;
 
     public Integer getTweetId() {
