@@ -1,6 +1,7 @@
 package com.example.twitterserver.users;
 
 import com.example.twitterserver.tweets.Tweet;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -20,6 +21,7 @@ public class User {
     private Timestamp joined;
     private Boolean verified;
     @OneToMany(mappedBy = "tweetedBy")
+    @JsonIgnore
     private List<Tweet> tweets;
 
     public List<Tweet> getTweets() {
