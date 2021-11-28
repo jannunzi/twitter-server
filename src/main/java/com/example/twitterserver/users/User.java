@@ -1,7 +1,10 @@
 package com.example.twitterserver.users;
 
+import com.example.twitterserver.tweets.Tweet;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -16,6 +19,8 @@ public class User {
     private String email;
     private Timestamp joined;
     private Boolean verified;
+    @OneToMany(mappedBy = "tweetedBy")
+    private List<Tweet> tweets;
 
     public Boolean getVerified() {
         return verified;
