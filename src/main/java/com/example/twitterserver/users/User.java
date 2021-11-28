@@ -15,6 +15,15 @@ public class User {
     private String lastName;
     private String email;
     private Timestamp joined;
+    private Boolean verified;
+
+    public Boolean getVerified() {
+        return verified;
+    }
+
+    public void setVerified(Boolean verified) {
+        this.verified = verified;
+    }
 
     public Integer getUserId() {
         return userId;
