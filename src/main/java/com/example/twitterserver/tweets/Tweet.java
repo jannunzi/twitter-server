@@ -1,10 +1,12 @@
 package com.example.twitterserver.tweets;
 
+import com.example.twitterserver.likes.Like;
 import com.example.twitterserver.users.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Entity
 @Table(name = "tweets")
@@ -17,6 +19,23 @@ public class Tweet {
     @ManyToOne
     @JsonIgnore
     private User tweetedBy;
+
+    @OneToMany(mappedBy = "liked")
+    @JsonIgnore
+    private List<Like> likes;
+
+    @Transient
+    public Integer getLikesCount() {
+        return likes.size();
+    }
+
+    public List<Like> getLikes() {
+        return likes;
+    }
+
+    public void setLikes(List<Like> likes) {
+        this.likes = likes;
+    }
 
     public Integer getTweetId() {
         return tweetId;
