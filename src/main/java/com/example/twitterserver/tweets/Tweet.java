@@ -1,6 +1,7 @@
 package com.example.twitterserver.tweets;
 
 import com.example.twitterserver.likes.Like;
+import com.example.twitterserver.replies.Reply;
 import com.example.twitterserver.users.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -27,6 +28,27 @@ public class Tweet {
     @Transient
     public Integer getLikesCount() {
         return likes.size();
+    }
+
+    @OneToMany(mappedBy = "repliedTo")
+    private List<Reply> replies;
+    @OneToMany(mappedBy = "reply")
+    private List<Reply> repliedTo;
+
+    public List<Reply> getReplies() {
+        return replies;
+    }
+
+    public void setReplies(List<Reply> replies) {
+        this.replies = replies;
+    }
+
+    public List<Reply> getRepliedTo() {
+        return repliedTo;
+    }
+
+    public void setRepliedTo(List<Reply> repliedTo) {
+        this.repliedTo = repliedTo;
     }
 
     public List<Like> getLikes() {
