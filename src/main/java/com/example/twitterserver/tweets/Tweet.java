@@ -18,7 +18,6 @@ public class Tweet {
     private String tweet;
     private Timestamp tweetedOn;
     @ManyToOne
-    @JsonIgnore
     private User tweetedBy;
 
     @OneToMany(mappedBy = "liked")
@@ -31,8 +30,10 @@ public class Tweet {
     }
 
     @OneToMany(mappedBy = "repliedTo")
+    @JsonIgnore
     private List<Reply> replies;
     @OneToMany(mappedBy = "reply")
+    @JsonIgnore
     private List<Reply> repliedTo;
 
     public List<Reply> getReplies() {

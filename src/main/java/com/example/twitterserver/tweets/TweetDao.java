@@ -14,6 +14,13 @@ import java.util.List;
 public class TweetDao {
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    TweetRepository tweetRepository;
+    @GetMapping("/api/tweets/{tweetId}")
+    public Tweet findTweetById(
+            @PathVariable("tweetId") Integer tweetId) {
+        return tweetRepository.findById(tweetId).get();
+    }
     @GetMapping("/api/users/{userId}/tweets")
     public List<Tweet> findTweetsByUser(
             @PathVariable("userId") Integer userId) {

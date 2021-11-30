@@ -12,22 +12,9 @@ public class Reply {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer replyId;
     @ManyToOne
-    @JsonIgnore
     private Tweet reply;
     @ManyToOne
-    @JsonIgnore
     private Tweet repliedTo;
-
-    @Transient
-    public Tweet getTweetReply() {
-        Tweet summary = new Tweet();
-        summary.setTweetId(reply.getTweetId());
-        summary.setTweet(reply.getTweet());
-        summary.setTweetedOn(reply.getTweetedOn());
-        summary.setTweetedBy(reply.getTweetedBy());
-        summary.setLikes(reply.getLikes());
-        return summary;
-    }
 
     public Integer getReplyId() {
         return replyId;
